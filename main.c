@@ -141,7 +141,7 @@ static int addRemoveAccountRight(LPWSTR accountName, LPWSTR rightName, BOOL add)
 	if (rightName) {
 		LSA_UNICODE_STRING privilegeString;
 		privilegeString.Buffer = rightName;
-		privilegeString.Length = wcslen(privilegeString.Buffer) * sizeof(WCHAR);
+		privilegeString.Length = (USHORT)wcslen(privilegeString.Buffer) * sizeof(WCHAR);
 		privilegeString.MaximumLength = privilegeString.Length + sizeof(WCHAR);
 
 		if (add) {
