@@ -37,13 +37,17 @@
 #define WINVER _WIN32_WINNT
 #define WIN32_LEAN_AND_MEAN
 
+// NB we need this define/undef to fix the C4005 macro redefinition warnings
+//    that appear when we include windows.h and ntstatus.h.
+#define WIN32_NO_STATUS
 #include <windows.h>
-#include <lm.h>
+#undef WIN32_NO_STATUS
+#include <ntstatus.h>
 #include <ntsecapi.h>
+#include <lm.h>
 #include <sddl.h>
 #include <wchar.h>
 #include <userenv.h>
-#include <ntstatus.h>
 #include <stdio.h>
 
 
